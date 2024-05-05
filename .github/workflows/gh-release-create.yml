@@ -1,0 +1,30 @@
+name: gh release create
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "1.2.3 or similar"
+        type: string
+        required: true
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+jobs:
+  task-build:
+    uses: ./.github/workflows/task-build.yml
+  gh-release-create:
+    needs: task-build
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+      - run: |
+          gh release create \
+            "v$VERSION" \
+            --generate-notes \
+            bikeshed-x86_64-linux-unknown-gnu.tar.gz \
+            bikeshed-x86_64-pc-windows-msvc.zip \
+            bikeshed-arm64-apple-darwin.tar.gz \
+            bikeshed-x86_64-apple-darwin.tar.gz
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}

@@ -15,8 +15,9 @@ on:
       - README.md
       - .github/**
       - "!.github/workflows/task-build.yml"
+  workflow_call:
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: task-build-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   task-build:
@@ -43,7 +44,18 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python task.py build
+      - shell: bash
+        run: |
+          if [[ $RUNNER_OS == "Windows" ]]; then
+            (cd dist/bikeshed && powershell Compress-Archive . "../bikeshed-$TARGET.zip")
+          else
+            (cd dist/bikeshed && tar -czvf "../bikeshed-$TARGET.tar.gz" .)
+          fi
+        env:
+          TARGET: ${{ matrix.target }}
       - uses: actions/upload-artifact@v4
         with:
           name: bikeshed-${{ matrix.target }}
-          path: dist/bikeshed
+          path: |
+            dist/bikeshed-${{ matrix.target }}.zip
+            dist/bikeshed-${{ matrix.target }}.tar.gz

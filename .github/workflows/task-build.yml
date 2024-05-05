@@ -57,7 +57,9 @@ jobs:
           %*
           EOF
           echo "$HOME/.local/bin" >> "$GITHUB_PATH"
-      - shell: runvenv bash -e {0}
+      - shell: runvenv .venv bash -e {0}
+        run: pip install -r requirements.txt
+      - shell: runvenv .venv bash -e {0}
         run: python task.py build
       - uses: actions/upload-artifact@v4
         with:

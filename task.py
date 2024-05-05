@@ -51,12 +51,12 @@ pyinstaller -y --onefile --name bikeshed-onefile bikeshed/pyinstaller_main.py
 """
 
         if os.name == "nt":
-            p = subprocess.Popen([os.path.abspath("env/Scripts/activate")], stdin=subprocess.PIPE, text=True)
-            p.communicate(cmd)
+            p = subprocess.Popen(["C:\\Windows\\System32\\cmd.exe"], stdin=subprocess.PIPE, text=True)
+            p.communicate(f"call env\\Scripts\\activate.bat\n{cmd}\nexit\n")
             p.wait()
         else:
             p = subprocess.Popen(["/usr/bin/env", "sh"], stdin=subprocess.PIPE, text=True)
-            p.communicate(f". env/bin/activate\n{cmd}")
+            p.communicate(f". env/bin/activate\n{cmd}\nexit\n")
             p.wait()
     finally:
         os.chdir(wd)

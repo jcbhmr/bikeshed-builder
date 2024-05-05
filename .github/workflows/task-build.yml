@@ -40,26 +40,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - shell: bash
-        run: |
-          cat <<'EOF' > ~/.local/bin/runvenv
-          #!/usr/bin/env bash
-          set -e
-          . "$1/bin/activate"
-          "${@:2}"
-          EOF
-          chmod +x ~/.local/bin/runvenv
-          cat <<'EOF' > ~/.local/bin/runvenv.bat
-          @echo off
-          setlocal
-          call "%~1\Scripts\activate.bat"
-          shift
-          %*
-          EOF
-          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
-      - shell: runvenv .venv bash -e {0}
+      - run: pipx install venv-run
+      - shell: venv-run -- bash -e {0}
         run: pip install -r requirements.txt
-      - shell: runvenv .venv bash -e {0}
+      - shell: venv-run -- bash -e {0}
         run: python task.py build
       - uses: actions/upload-artifact@v4
         with:

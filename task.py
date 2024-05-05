@@ -24,23 +24,25 @@ def setup():
         print(f"WARNING: Unsupported platform. Please install {PYTHON} manually.")
 
 def build():
-    os.chdir("bikeshed")
+    wd = os.getcwd()
+    os.chdir(os.path.join(os.path.dirname(__file__), "bikeshed"))
+    try:
 
-    # if not os.path.exists("bikeshed/pyinstaller_main.py"):
-    if True:
-        with open("bikeshed/pyinstaller_main.py", "w") as f:
-            f.write("""
+        # if not os.path.exists("bikeshed/pyinstaller_main.py"):
+        if True:
+            with open("bikeshed/pyinstaller_main.py", "w") as f:
+                f.write("""
 from bikeshed.cli import main
 main()
 """)
 
-    if not os.path.exists("env"):
-        if os.name == "nt":
-            subprocess.run(["py", "-"+PYTHON_VERSION, "-m", "venv", "env"])
-        else:
-            subprocess.run([PYTHON, "-m", "venv", "env"])
+        if not os.path.exists("env"):
+            if os.name == "nt":
+                subprocess.run(["py", "-"+PYTHON_VERSION, "-m", "venv", "env"])
+            else:
+                subprocess.run([PYTHON, "-m", "venv", "env"])
 
-    cmd = """
+        cmd = """
 pip install -r requirements.txt
 pip install -r requirements-dev.txt
 pip install pyinstaller
@@ -48,16 +50,16 @@ pyinstaller -y --name bikeshed bikeshed/pyinstaller_main.py
 pyinstaller -y --onefile --name bikeshed-onefile bikeshed/pyinstaller_main.py
 """
 
-    if os.name == "nt":
-        p = subprocess.Popen([os.path.abspath("env/Scripts/activate")], stdin=subprocess.PIPE, text=True)
-        p.communicate(cmd)
-        p.wait()
-    else:
-        p = subprocess.Popen(["/usr/bin/env", "sh"], stdin=subprocess.PIPE, text=True)
-        p.communicate(f". env/bin/activate\n{cmd}")
-        p.wait()
-
-    os.chdir("..")
+        if os.name == "nt":
+            p = subprocess.Popen([os.path.abspath("env/Scripts/activate")], stdin=subprocess.PIPE, text=True)
+            p.communicate(cmd)
+            p.wait()
+        else:
+            p = subprocess.Popen(["/usr/bin/env", "sh"], stdin=subprocess.PIPE, text=True)
+            p.communicate(f". env/bin/activate\n{cmd}")
+            p.wait()
+    finally:
+        os.chdir(wd)
 
     pathlib.Path("dist").mkdir(parents=True, exist_ok=True)
     shutil.move("bikeshed/dist/bikeshed", "dist/bikeshed")

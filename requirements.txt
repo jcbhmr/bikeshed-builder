@@ -20,7 +20,7 @@ kdl-py==1.2.0
 lxml==5.1.0
 multidict==6.0.5
 packaging==24.0
-pillow==10.2.0
+pillow==10.3.0
 Pygments==2.17.2
 pyinstaller==6.6.0
 pyinstaller-hooks-contrib==2024.5

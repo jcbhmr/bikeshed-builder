@@ -41,9 +41,11 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: pipenv
-          cache-dependency-path: requirements*.txt
       - run: pipx install venv-run
+      - uses: actions/cache@v4
+        with:
+          path: .venv
+          key: venv-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('requirements*.txt') }}
       - run: python -m venv .venv
       - shell: venv-run -- bash -e {0}
         run: pip install -r requirements.txt

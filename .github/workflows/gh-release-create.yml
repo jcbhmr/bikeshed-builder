@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
       - run: |
-          for f in "$ARTIFACTS"; do
+          for f in $ARTIFACTS; do
             pushd "$f"
             if [[ $f == *windows* ]]; then
               (cd "$f" && powershell Compress-Archive . "../$f.zip")
@@ -28,7 +28,7 @@ jobs:
             popd
           done
         env:
-          ARTIFACTS: >
+          ARTIFACTS: >-
             bikeshed-x86_64-linux-unknown-gnu
             bikeshed-x86_64-pc-windows-msvc
             bikeshed-arm64-apple-darwin

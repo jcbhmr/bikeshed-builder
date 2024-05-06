@@ -1,6 +1,10 @@
 name: gh release create
 on:
   workflow_dispatch:
+    inputs:
+      draft:
+        type: boolean
+        default: false
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   task-build:
@@ -33,9 +37,11 @@ jobs:
       - run: |
           gh release create \
             "v$VERSION" \
+            $DRAFT_FLAG \
             --generate-notes \
             dist/*.tar.gz dist/*.zip
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
           VERSION: ${{ steps.yq.outputs.result }}
+          DRAFT_FLAG: ${{ github.event.inputs.draft && '--draft' || '' }}

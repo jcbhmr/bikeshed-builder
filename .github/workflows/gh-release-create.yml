@@ -1,11 +1,6 @@
 name: gh release create
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: "1.2.3 or similar"
-        type: string
-        required: true
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   task-build:

@@ -20,9 +20,11 @@ jobs:
       - run: |
           for f in $ARTIFACTS; do
             if [[ $f == *windows* ]]; then
-              (cd "$f" && powershell Compress-Archive . "../$f.zip")
+              wd="$PWD"
+              (cd "$f" && powershell Compress-Archive . "$wd/$f.zip")
             else
-              (cd "$f" && tar -czvf "../$f.tar.gz" .)
+              wd="$PWD"
+              (cd "$f" && tar -czvf "$wd/$f.tar.gz" .)
             fi
           done
         env:

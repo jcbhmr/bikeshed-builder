@@ -69,7 +69,9 @@ Install Python 3.12 from the [official Python website](https://www.python.org/do
 
 Make sure you have a Python 3.12 installation setup that includes the magic stuff that PyInstaller needs.
 
-Next, setup your virtual environment (recommended for dev machines):
+<details><summary>Next, setup your virtual environment (recommended for dev machines)</summary>
+
+Create the virtual environment first:
 
 <dl>
 <dt>Linux & macOS
@@ -88,7 +90,7 @@ py -3.12 -m venv .venv
 
 </dl>
 
-Then activate your virtual environment:
+Then activate your virtual environment for the current terminal:
 
 <dl>
 <dt>Linux & macOS Bash
@@ -113,6 +115,7 @@ call .venv\Scripts\activate
 ```
 
 </dl>
+</details>
 
 And install the dependencies using pip:
 

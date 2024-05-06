@@ -21,7 +21,7 @@ jobs:
           for f in $ARTIFACTS; do
             if [[ $f == *windows* ]]; then
               wd="$PWD"
-              (cd "$f" && powershell Compress-Archive . "$wd/$f.zip")
+              (cd "$f" && zip "$wd/$f.zip" .)
             else
               wd="$PWD"
               (cd "$f" && tar -czvf "$wd/$f.tar.gz" .)

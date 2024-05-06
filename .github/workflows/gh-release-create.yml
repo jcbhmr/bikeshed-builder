@@ -24,7 +24,7 @@ jobs:
               (cd "$f" && zip "$wd/$f.zip" .)
             else
               wd="$PWD"
-              (cd "$f" && tar -czvf "$wd/$f.tar.gz" .)
+              (cd "$f" && tar -czf "$wd/$f.tar.gz" .)
             fi
           done
         env:

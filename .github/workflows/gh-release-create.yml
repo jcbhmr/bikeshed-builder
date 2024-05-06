@@ -17,11 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
-      - run: |
+      - shell: bash -ex {0}
+        run: |
           for f in $ARTIFACTS; do
             if [[ $f == *windows* ]]; then
               wd="$PWD"
-              (cd "$f" && zip "$wd/$f.zip" .)
+              (cd "$f" && zip r "$wd/$f.zip" .)
             else
               wd="$PWD"
               (cd "$f" && tar -czf "$wd/$f.tar.gz" .)

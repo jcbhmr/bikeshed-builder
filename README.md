@@ -67,7 +67,7 @@ Install Python 3.12 from the [official Python website](https://www.python.org/do
 </dl>
 </details>
 
-Make sure you have a Python 3.12 installation setup that includes the dynamic library and development headers that PyInstaller needs.
+Make sure you have a Python 3.12 installation setup that includes the magic stuff that PyInstaller needs.
 
 Next, setup your virtual environment (recommended for dev machines):
 

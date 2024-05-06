@@ -120,7 +120,7 @@ call .venv\Scripts\activate
 And install the dependencies using pip:
 
 ```sh
-pip install .[dev]
+pip install -e .[dev]
 ```
 
 And now you're ready to start developing! 🚀

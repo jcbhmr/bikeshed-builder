@@ -11,10 +11,13 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
+        with:
+          path: dist
       - shell: bash -ex {0}
         run: |
-          for f in $ARTIFACTS; do
+          for f in dist/*; do
             if [[ $f == *windows* ]]; then
               wd="$PWD"
               (cd "$f" && zip -r "$wd/$f.zip" .)
@@ -23,12 +26,6 @@ jobs:
               (cd "$f" && tar -czf "$wd/$f.tar.gz" .)
             fi
           done
-        env:
-          ARTIFACTS: >-
-            bikeshed-x86_64-unknown-linux-gnu
-            bikeshed-x86_64-pc-windows-msvc
-            bikeshed-arm64-apple-darwin
-            bikeshed-x86_64-apple-darwin
       - id: yq
         uses: mikefarah/yq@master
         with:
@@ -37,7 +34,7 @@ jobs:
           gh release create \
             "v$VERSION" \
             --generate-notes \
-            *.tar.gz *.zip
+            dist/*.tar.gz dist/*.zip
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}

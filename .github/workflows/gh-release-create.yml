@@ -22,7 +22,7 @@ jobs:
           for f in $ARTIFACTS; do
             if [[ $f == *windows* ]]; then
               wd="$PWD"
-              (cd "$f" && zip r "$wd/$f.zip" .)
+              (cd "$f" && zip -r "$wd/$f.zip" .)
             else
               wd="$PWD"
               (cd "$f" && tar -czf "$wd/$f.tar.gz" .)

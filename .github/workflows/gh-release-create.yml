@@ -34,6 +34,10 @@ jobs:
             bikeshed-x86_64-pc-windows-msvc
             bikeshed-arm64-apple-darwin
             bikeshed-x86_64-apple-darwin
+      - id: yq
+        uses: mikefarah/yq@master
+        with:
+          cmd: yq .project.version pyproject.toml
       - run: |
           gh release create \
             "v$VERSION" \
@@ -42,3 +46,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
+          VERSION: ${{ steps.yq.outputs.result }}

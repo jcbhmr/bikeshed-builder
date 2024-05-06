@@ -38,11 +38,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
+      - run: pipx install poetry
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: poetry
-      - run: pipx install poetry poethepoet
+      - run: pipx install poethepoet
       - run: poetry install
       - run: poe build
       - run: poe test

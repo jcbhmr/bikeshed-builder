@@ -44,6 +44,7 @@ jobs:
           cache: pip
       - run: pip install .[dev]
       - run: python task.py build
+      - run: dist/bikeshed/bikeshed --version
       - uses: actions/upload-artifact@v4
         with:
           name: bikeshed-${{ matrix.target }}

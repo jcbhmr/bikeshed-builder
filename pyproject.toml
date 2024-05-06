@@ -2,4 +2,4 @@
 name = "bikeshed-builder"
 version = "0.0.0+4.1.6"
 classifiers = ["Private :: Do Not Upload"]
-dependencies = ["bikeshed==4.1.6"]
+dependencies = ["bikeshed==4.1.6", "pyinstaller"]

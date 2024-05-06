@@ -1,0 +1,4 @@
+[project]
+name = "bikeshed-builder"
+version = "0.0.0+4.1.6"
+classifiers = ["Private :: Do Not Upload"]

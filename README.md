@@ -4,6 +4,8 @@
 
 ## Installation
 
+ℹ These installation steps will install **the Bikeshed project** itself (the `bikeshed` binary), not the builder infrastructure.
+
 You can install Bikeshed straight from [the GitHub releases tab](https://github.com/jcbhmr/bikeshed-builder/releases/latest) or by using the `install.sh` script which will automagically✨ choose the right binary for your platform.
 
 ```sh
@@ -16,4 +18,99 @@ This project is intended to be used & integrated with software that works better
 
 ## Development
 
-TODO
+<details><summary>First install the complete Python 3.12 environment</summary>
+
+<dl>
+<dt>Ubuntu
+<dd>
+
+```sh
+sudo apt install python3.12 python3.12-dev python3.12-venv
+```
+
+<details><summary>You might need deadsnakes</summary>
+
+Your Ubuntu distribution might not have Python 3.12 in its repositories. You can add [the deadsnakes PPA](https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa) to get more Python versions for more Ubuntu versions.
+
+```sh
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+```
+
+</details>
+
+<dt>macOS
+<dd>
+
+```sh
+brew install python@3.12
+```
+
+<dt>Windows
+<dd>
+
+Install Python 3.12 from the [official Python website](https://www.python.org/downloads/) for Windows.
+
+</dl>
+</details>
+
+Make sure you have a Python 3.12 installation setup that includes the dynamic library and development headers that PyInstaller needs.
+
+Next, setup your virtual environment (recommended for dev machines):
+
+<dl>
+<dt>Linux & macOS
+<dd>
+
+```sh
+python3.12 -m venv .venv
+```
+
+<dt>Windows
+<dd>
+
+```cmd
+py -3.12 -m venv .venv
+```
+
+</dl>
+
+Then activate your virtual environment:
+
+<dl>
+<dt>Linux & macOS Bash
+<dd>
+
+```sh
+. .venv/bin/activate
+```
+
+<dt>Windows cmd
+<dd>
+
+```cmd
+call .venv\Scripts\activate
+```
+
+<dt>Windows PowerShell
+<dd>
+
+```pwsh
+. .venv/Scripts/Activate.ps1
+```
+
+</dl>
+
+And install the dependencies using pip:
+
+```sh
+pip install .[dev]
+```
+
+And now you're ready to start developing! 🚀
+
+`task.py` has the `build` task which will build the Bikeshed binary for your current platform. You can run it like this:
+
+```sh
+python task.py build
+```

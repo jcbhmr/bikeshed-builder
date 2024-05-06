@@ -42,7 +42,7 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install .[dev]
+      - run: pip install -e .[dev]
       - run: python task.py build
       - run: dist/bikeshed/bikeshed --version
       - uses: actions/upload-artifact@v4

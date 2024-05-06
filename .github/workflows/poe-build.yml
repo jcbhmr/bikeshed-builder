@@ -1,4 +1,4 @@
-name: task.py build
+name: poe build
 on:
   push:
     branches: ["main"]
@@ -7,20 +7,20 @@ on:
       - LICENSE
       - README.md
       - .github/**
-      - "!.github/workflows/task-build.yml"
+      - "!.github/workflows/poe-build.yml"
   pull_request:
     paths-ignore:
       - .gitignore
       - LICENSE
       - README.md
       - .github/**
-      - "!.github/workflows/task-build.yml"
+      - "!.github/workflows/poe-build.yml"
   workflow_call:
 concurrency:
-  group: task-build-${{ github.workflow }}-${{ github.ref }}
+  group: poe-build-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  task-build:
+  poe-build:
     strategy:
       fail-fast: false
       matrix:
@@ -41,9 +41,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: pip
-      - run: pip install -e .[dev]
-      - run: python task.py build
+          cache: poetry
+      - run: pipx install poetry poethepoet
+      - run: poetry install
+      - run: poe build
+      - run: poe test
       - run: dist/bikeshed/bikeshed --version
       - uses: actions/upload-artifact@v4
         with:

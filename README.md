@@ -130,3 +130,11 @@ And now you're ready to start developing! 🚀
 ```sh
 python task.py build
 ```
+
+Make sure you save any dependency changes to the `requirements.txt` lockfile like this:
+
+```sh
+pip freeze > requirements.txt
+```
+
+☝ That's what's used in CI via `pip install -r requirements.txt` similar to `Cargo.lock` and `package-lock.json` from Rust and JavaScript respectively.

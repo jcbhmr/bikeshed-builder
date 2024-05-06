@@ -19,13 +19,11 @@ jobs:
       - uses: actions/download-artifact@v4
       - run: |
           for f in $ARTIFACTS; do
-            pushd "$f"
             if [[ $f == *windows* ]]; then
               (cd "$f" && powershell Compress-Archive . "../$f.zip")
             else
               (cd "$f" && tar -czvf "../$f.tar.gz" .)
             fi
-            popd
           done
         env:
           ARTIFACTS: >-

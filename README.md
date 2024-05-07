@@ -46,6 +46,17 @@ https://github.com/jcbhmr/bikeshed-builder/releases/download/$VERSION/bikeshed-x
 
 Programs are encouraged to pin each of their versions to an exact version of Bikeshed and then update Bikeshed as a dependency as opposed to always fetching the latest bikeshed-builder release.
 
+The `.zip` and `.tar.gz` archives all have the same layout:
+
+```
+.
+├── bikeshed
+└── _internal/
+    └── ...
+```
+
+Note that everything is directly in the root folder! That means if you want to extract the contents of your shiny `bikeshed-x86_64-unknown-linux-gnu.tar.gz` into a `~/.bikeshed` folder you should `mkdir ~/.bikeshed` and then `tar -xzvf bikeshed-x86_64-unknown-linux-gnu.tar.gz -C ~/.bikeshed`.
+
 ## Development
 
 ![Python](https://img.shields.io/static/v1?style=for-the-badge&message=Python&color=3776AB&logo=Python&logoColor=FFFFFF&label=)

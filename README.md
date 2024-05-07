@@ -59,7 +59,7 @@ Note that everything is directly in the root folder! That means if you want to e
 
 ```sh
 mkdir ~/.bikeshed
-tar -xzvf bikeshed-x86_64-unknown-linux-gnu.tar.gz -C ~/.bikeshed
+tar -xzvf *.tar.gz -C ~/.bikeshed
 ```
 
 ## Development

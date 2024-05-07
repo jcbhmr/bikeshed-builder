@@ -38,7 +38,7 @@ Here are the relevant URLs that you would use in your code to fetch releases fro
 ```
 https://github.com/jcbhmr/bikeshed-builder/releases/download/$VERSION/bikeshed-arm64-apple-darwin.tar.gz
 https://github.com/jcbhmr/bikeshed-builder/releases/download/$VERSION/bikeshed-x86_64-apple-darwin.tar.gz
-https://github.com/jcbhmr/bikeshed-builder/releases/download/$VERSION/bikeshed-x86_64-pc-windows-msvc.tar.gz
+https://github.com/jcbhmr/bikeshed-builder/releases/download/$VERSION/bikeshed-x86_64-pc-windows-msvc.zip
 https://github.com/jcbhmr/bikeshed-builder/releases/download/$VERSION/bikeshed-x86_64-unknown-linux-gnu.tar.gz
 ```
 

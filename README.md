@@ -23,7 +23,7 @@
 pipx install bikeshed
 ```
 
-You can install Bikeshed builds from [the GitHub releases tab](https://github.com/jcbhmr/bikeshed-builder/releases).
+You can get Bikeshed builds built by this bikeshed-builder project from [the GitHub releases tab](https://github.com/jcbhmr/bikeshed-builder/releases). These are unofficial.
 
 ## Usage
 
@@ -31,21 +31,42 @@ You can install Bikeshed builds from [the GitHub releases tab](https://github.co
 ![Linux](https://img.shields.io/static/v1?style=for-the-badge&message=Linux&color=222222&logo=Linux&logoColor=FCC624&label=)
 ![macOS](https://img.shields.io/static/v1?style=for-the-badge&message=macOS&color=000000&logo=macOS&logoColor=FFFFFF&label=)
 
-This project is intended to be used & integrated with software that works better without the Python & pip requirements that the official Bikeshed distribution method uses. You can also use it as a standalone way to install Bikeshed without a Python environment.
+This project is intended to be used & integrated with software that works better without the Python & pip requirements that the official Bikeshed distribution method uses. You can also use it as a standalone way to install Bikeshed without a Python environment. For example an npm redistribution of the Bikeshed project to be `npm install <bikeshed_package_name>` would not want to require a particular Python environment. Instead, they would opt for a premade AiO binary/package like bikeshed-builder! 😉
+
+Here are the relevant URLs that you would use in your code to fetch releases from this bikeshed-builder project:
+
+```
+https://github.com/jcbhmr/bikeshed-builder/releases/download/${VERSION}/bikeshed-arm64-apple-darwin.tar.gz
+https://github.com/jcbhmr/bikeshed-builder/releases/download/${VERSION}/bikeshed-x86_64-apple-darwin.tar.gz
+https://github.com/jcbhmr/bikeshed-builder/releases/download/${VERSION}/bikeshed-x86_64-pc-windows-msvc.tar.gz
+https://github.com/jcbhmr/bikeshed-builder/releases/download/${VERSION}/bikeshed-x86_64-unknown-linux-gnu.tar.gz
+```
+
+ℹ bikeshed-builder uses a Debian-inspired distribution suffix versioning scheme. `bikeshed==4.1.6` would be built & tagged as `v4.1.6-1` (and then `v4.1.6-2` and so on for changes made without updating the underlying Bikeshed version).
+
+Programs are encouraged to pin each of their versions to an exact version of Bikeshed and then update Bikeshed as a dependency as opposed to always fetching the latest bikeshed-builder release.
 
 ## Development
 
 ![Python](https://img.shields.io/static/v1?style=for-the-badge&message=Python&color=3776AB&logo=Python&logoColor=FFFFFF&label=)
 ![Poetry](https://img.shields.io/static/v1?style=for-the-badge&message=Poetry&color=60A5FA&logo=Poetry&logoColor=FFFFFF&label=)
 
+This project uses [Poetry](https://python-poetry.org/). [Python's packaging and dependency landscape is a mess.](https://chriswarrick.com/blog/2024/01/15/python-packaging-one-year-later/) Poetry is the most popular Python package manager (excluding plain `pip`). [Poe the Poet](https://poethepoet.natn.io/) is used as a task runner since [Poetry doesn't have a built-in task runner](https://github.com/python-poetry/poetry/issues/2496).
+
 ```sh
 pipx install poetry poethepoet
 ```
+
+After cloning this project getting started is easy!
 
 ```sh
 poetry install
 ```
 
+And then you can run the `build` or `test` tasks to make sure everything works.
+
 ```sh
 poe test
 ```
+
+This entire project hinges on 1) getting the `bikeshed` PyPI package to properly install, 2) creating a wrapper script that invokes the bikeshed CLI, and then 3) properly wrapping all that up with PyInstaller, There's also 4) get it to build on GitHub Actions.

@@ -3,7 +3,7 @@
 🚲 Bundles Bikeshed for use without Python & pip
 
 <p align=center>
-  <a href="https://github.com/jcbhmr/bikeshed-builder/releases/latest"><img src="https://github.com/jcbhmr/bikeshed-builder/assets/61068799/31f6fae4-ede5-4e9a-a54b-6e09fe814064"></a>
+  <a href="https://github.com/jcbhmr/bikeshed-builder/releases/latest"><img src="https://github.com/jcbhmr/bikeshed-builder/assets/61068799/85929f40-991a-4de8-b212-86f85a7fed5c"></a>
 </p>
 
 🐍 Uses [PyInstaller](https://pyinstaller.org/en/stable/) \

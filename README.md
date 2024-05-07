@@ -36,10 +36,10 @@ This project is intended to be used & integrated with software that works better
 Here are the relevant URLs that you would use in your code to fetch releases from this bikeshed-builder project:
 
 ```
-https://github.com/jcbhmr/bikeshed-builder/releases/download/${VERSION}/bikeshed-arm64-apple-darwin.tar.gz
-https://github.com/jcbhmr/bikeshed-builder/releases/download/${VERSION}/bikeshed-x86_64-apple-darwin.tar.gz
-https://github.com/jcbhmr/bikeshed-builder/releases/download/${VERSION}/bikeshed-x86_64-pc-windows-msvc.tar.gz
-https://github.com/jcbhmr/bikeshed-builder/releases/download/${VERSION}/bikeshed-x86_64-unknown-linux-gnu.tar.gz
+https://github.com/jcbhmr/bikeshed-builder/releases/download/$VERSION/bikeshed-arm64-apple-darwin.tar.gz
+https://github.com/jcbhmr/bikeshed-builder/releases/download/$VERSION/bikeshed-x86_64-apple-darwin.tar.gz
+https://github.com/jcbhmr/bikeshed-builder/releases/download/$VERSION/bikeshed-x86_64-pc-windows-msvc.tar.gz
+https://github.com/jcbhmr/bikeshed-builder/releases/download/$VERSION/bikeshed-x86_64-unknown-linux-gnu.tar.gz
 ```
 
 ℹ bikeshed-builder uses a Debian-inspired distribution suffix versioning scheme. `bikeshed==4.1.6` would be built & tagged as `v4.1.6-1` (and then `v4.1.6-2` and so on for changes made without updating the underlying Bikeshed version).

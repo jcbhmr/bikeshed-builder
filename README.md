@@ -51,6 +51,8 @@ Programs are encouraged to pin each of their versions to an exact version of Bik
 ![Python](https://img.shields.io/static/v1?style=for-the-badge&message=Python&color=3776AB&logo=Python&logoColor=FFFFFF&label=)
 ![Poetry](https://img.shields.io/static/v1?style=for-the-badge&message=Poetry&color=60A5FA&logo=Poetry&logoColor=FFFFFF&label=)
 
+This entire project hinges on 1) getting the `bikeshed` PyPI package to properly install, 2) creating a wrapper script that invokes the bikeshed CLI, and then 3) properly wrapping all that up with PyInstaller. There's also 4) get it to build on GitHub Actions and 5) uploading the public release artifacts.
+
 This project uses [Poetry](https://python-poetry.org/). [Python's packaging and dependency landscape is a mess.](https://chriswarrick.com/blog/2024/01/15/python-packaging-one-year-later/) Poetry is the most popular Python package manager (excluding plain `pip`). [Poe the Poet](https://poethepoet.natn.io/) is used as a task runner since [Poetry doesn't have a built-in task runner](https://github.com/python-poetry/poetry/issues/2496).
 
 ```sh
@@ -69,4 +71,9 @@ And then you can run the `build` or `test` tasks to make sure everything works.
 poe test
 ```
 
-This entire project hinges on 1) getting the `bikeshed` PyPI package to properly install, 2) creating a wrapper script that invokes the bikeshed CLI, and then 3) properly wrapping all that up with PyInstaller. There's also 4) get it to build on GitHub Actions and 5) uploading the public release artifacts.
+To create a new release:
+
+1. Change the `bikeshed` version dependency in `pyproject.toml`.
+2. Update the `version` field in `pyproject.toml` to reflect the new Bikeshed version with the appropriate suffix. This version field is read by the gh release create workflow.
+3. Go to [the gh release create workflow page](https://github.com/jcbhmr/bikeshed-builder/actions/workflows/gh-release-create.yml)
+4. Manually run the workflow. You can choose to create a draft instead of immediately publishing it.

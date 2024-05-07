@@ -55,7 +55,7 @@ The `.zip` and `.tar.gz` archives all have the same layout:
     └── ...
 ```
 
-Note that everything is directly in the root folder! That means if you want to extract the contents to `~/.bikeshed` here's what you might do:
+Note that everything is in the root folder! That means if you want to extract the contents to `~/.bikeshed` here's what you might do:
 
 ```sh
 mkdir ~/.bikeshed

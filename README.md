@@ -42,7 +42,7 @@ https://github.com/jcbhmr/bikeshed-builder/releases/download/$TAG/bikeshed-x86_6
 https://github.com/jcbhmr/bikeshed-builder/releases/download/$TAG/bikeshed-x86_64-unknown-linux-gnu.tar.gz
 ```
 
-ℹ bikeshed-builder uses a Debian-inspired distribution suffix versioning scheme. `bikeshed==4.1.6` would be built & tagged as `v4.1.6-1` (and then `v4.1.6-2` and so on for changes made without updating the underlying Bikeshed version). Don't forget the `v` prefix! 😁
+ℹ bikeshed-builder uses a Debian-inspired `.N` suffix versioning scheme. `bikeshed==4.1.6` would be built & tagged as `v4.1.6.1` (and then `v4.1.6.2` and so on for changes made without updating the underlying Bikeshed version). Don't forget the `v` prefix! 😁
 
 Programs are encouraged to pin each of their versions to an exact version of Bikeshed and then update Bikeshed as a dependency as opposed to always fetching the latest bikeshed-builder release.
 

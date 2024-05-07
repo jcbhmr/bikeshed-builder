@@ -69,4 +69,4 @@ And then you can run the `build` or `test` tasks to make sure everything works.
 poe test
 ```
 
-This entire project hinges on 1) getting the `bikeshed` PyPI package to properly install, 2) creating a wrapper script that invokes the bikeshed CLI, and then 3) properly wrapping all that up with PyInstaller, There's also 4) get it to build on GitHub Actions.
+This entire project hinges on 1) getting the `bikeshed` PyPI package to properly install, 2) creating a wrapper script that invokes the bikeshed CLI, and then 3) properly wrapping all that up with PyInstaller. There's also 4) get it to build on GitHub Actions and 5) uploading the public release artifacts.

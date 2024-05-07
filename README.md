@@ -55,7 +55,12 @@ The `.zip` and `.tar.gz` archives all have the same layout:
     └── ...
 ```
 
-Note that everything is directly in the root folder! That means if you want to extract the contents of your shiny `bikeshed-x86_64-unknown-linux-gnu.tar.gz` into a `~/.bikeshed` folder you should `mkdir ~/.bikeshed` and then `tar -xzvf bikeshed-x86_64-unknown-linux-gnu.tar.gz -C ~/.bikeshed`.
+Note that everything is directly in the root folder! That means if you want to extract the contents to `~/.bikeshed` here's what you might do:
+
+```sh
+mkdir ~/.bikeshed
+tar -xzvf bikeshed-x86_64-unknown-linux-gnu.tar.gz -C ~/.bikeshed
+```
 
 ## Development
 

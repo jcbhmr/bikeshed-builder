@@ -47,4 +47,4 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
           VERSION: ${{ needs.get-version.outputs.version }}
-          DRAFT_FLAG: ${{ github.event.inputs.draft && '--draft' || '' }}
+          DRAFT_FLAG: ${{ (inputs.draft && '--draft') || '' }}

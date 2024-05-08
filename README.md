@@ -69,7 +69,7 @@ tar -xzvf *.tar.gz -C ~/.bikeshed
 
 This entire project hinges on 1) getting the `bikeshed` PyPI package to properly install, 2) creating a wrapper script that invokes the bikeshed CLI, and then 3) properly wrapping all that up with PyInstaller. There's also 4) get it to build on GitHub Actions and 5) uploading the public release artifacts.
 
-This project uses [Poetry](https://python-poetry.org/). [Python's packaging and dependency landscape is a mess.](https://chriswarrick.com/blog/2024/01/15/python-packaging-one-year-later/) Poetry is the most popular Python package manager (excluding plain `pip`). [Poe the Poet](https://poethepoet.natn.io/) is used as a task runner since [Poetry doesn't have a built-in task runner](https://github.com/python-poetry/poetry/issues/2496).
+[Python's packaging and dependency landscape is a mess.](https://chriswarrick.com/blog/2024/01/15/python-packaging-one-year-later/) This project uses [Poetry](https://python-poetry.org/), the most popular Python package manager (excluding plain `pip`). [Poe the Poet](https://poethepoet.natn.io/) is used as a task runner since [Poetry doesn't have a built-in task runner](https://github.com/python-poetry/poetry/issues/2496). You can install these tools using [`pipx`](https://github.com/pypa/pipx).
 
 ```sh
 pipx install poetry poethepoet

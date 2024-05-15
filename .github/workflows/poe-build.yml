@@ -39,14 +39,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
-      - run: pipx install poetry
+      # - run: pipx install poetry
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           # Can't use cache because macos-latest and macos-13 have different
           # architecture but have the same cache key.
           # cache: poetry
-      - run: pipx install poethepoet
+      - run: pipx install poetry poethepoet
       - run: poetry install
       - run: poe build
       - run: poe test

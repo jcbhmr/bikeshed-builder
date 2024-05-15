@@ -37,8 +37,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: true
       # - run: pipx install poetry
       - uses: actions/setup-python@v5
         with:

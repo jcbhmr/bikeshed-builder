@@ -42,7 +42,7 @@ https://github.com/jcbhmr/bikeshed-builder/releases/download/$TAG/bikeshed-x86_6
 https://github.com/jcbhmr/bikeshed-builder/releases/download/$TAG/bikeshed-x86_64-unknown-linux-gnu.tar.gz
 ```
 
-ℹ bikeshed-builder uses a Debian-inspired `.N` suffix versioning scheme. `bikeshed==4.1.6` would be built & tagged as `v4.1.6.1` (and then `v4.1.6.2` and so on for changes made without updating the underlying Bikeshed version). Don't forget the `v` prefix! 😁
+ℹ bikeshed-builder matches the Bikeshed versions as they are released. `bikeshed==4.1.6` would be built & tagged as `v4.1.6`. Don't forget the `v` prefix! 😁
 
 Programs are encouraged to pin each of their versions to an exact version of Bikeshed and then update Bikeshed as a dependency as opposed to always fetching the latest bikeshed-builder release.
 
@@ -90,6 +90,8 @@ poe test
 To create a new release:
 
 1. Change the `bikeshed` version dependency in `pyproject.toml`.
-2. Update the `version` field in `pyproject.toml` to reflect the new Bikeshed version with the appropriate suffix. This version field is read by the gh release create workflow.
+2. Update the `version` field in `pyproject.toml` to reflect the new Bikeshed version with the appropriate suffix. This version field is read by [the gh release create workflow](https://github.com/jcbhmr/bikeshed-builder/blob/main/.github/workflows/gh-release-create.yml).
 3. Go to [the gh release create workflow page](https://github.com/jcbhmr/bikeshed-builder/actions/workflows/gh-release-create.yml)
 4. Manually run the workflow. You can choose to create a draft instead of immediately publishing it.
+
+You can use `rc1` or similar prereleases to try things out if needed but `draft: true` should suffice in most cases to make sure things look good.

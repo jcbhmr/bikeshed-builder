@@ -3,12 +3,42 @@ on:
   workflow_dispatch:
     inputs:
       draft:
+        description: ""
         type: boolean
         default: false
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   poe-build:
-    uses: ./.github/workflows/poe-build.yml
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Use older Ubuntu distro to force older glibc
+          - os: ubuntu-20.04
+            target: x86_64-unknown-linux-gnu
+          - os: windows-latest
+            target: x86_64-pc-windows-msvc
+          - os: macos-latest
+            target: arm64-apple-darwin
+          - os: macos-13
+            target: x86_64-apple-darwin
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      # - run: pipx install poetry
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          # Can't use cache because macos-latest and macos-13 have different
+          # architecture but have the same cache key.
+          # cache: poetry
+      - run: pipx install poetry poethepoet
+      - run: poetry install
+      - run: poe build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bikeshed-${{ matrix.target }}
+          path: dist/bikeshed
   get-version:
     outputs:
       version: ${{ steps.yq.outputs.result }}

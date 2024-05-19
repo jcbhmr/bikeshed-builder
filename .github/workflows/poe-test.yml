@@ -1,4 +1,4 @@
-name: poe build
+name: poe test
 on:
   push:
     branches: ["main"]
@@ -7,20 +7,19 @@ on:
       - LICENSE
       - README.md
       - .github/**
-      - "!.github/workflows/poe-build.yml"
+      - "!.github/workflows/poe-test.yml"
   pull_request:
     paths-ignore:
       - .gitignore
       - LICENSE
       - README.md
       - .github/**
-      - "!.github/workflows/poe-build.yml"
-  workflow_call:
+      - "!.github/workflows/poe-test.yml"
 concurrency:
-  group: poe-build-${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  poe-build:
+  poe-test:
     strategy:
       fail-fast: false
       matrix:
@@ -46,9 +45,4 @@ jobs:
           # cache: poetry
       - run: pipx install poetry poethepoet
       - run: poetry install
-      - run: poe build
       - run: poe test
-      - uses: actions/upload-artifact@v4
-        with:
-          name: bikeshed-${{ matrix.target }}
-          path: dist/bikeshed

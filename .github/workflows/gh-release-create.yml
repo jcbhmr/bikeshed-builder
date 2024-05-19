@@ -32,6 +32,7 @@ jobs:
           # Can't use cache because macos-latest and macos-13 have different
           # architecture but have the same cache key.
           # cache: poetry
+      - run: pip install pipx
       - run: pipx install poetry poethepoet
       - run: poetry install
       - run: poe build

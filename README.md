@@ -23,7 +23,7 @@
 pipx install bikeshed
 ```
 
-You can get Bikeshed builds built by this bikeshed-builder project from [the GitHub releases tab](https://github.com/jcbhmr/bikeshed-builder/releases). These are unofficial.
+You can get Bikeshed builds built by this bikeshed-builder project from [the GitHub releases tab](https://github.com/jcbhmr/bikeshed-builder/releases); these are unofficial. You can use ~~[go-bikeshed](https://github.com/jcbhmr/go-bikeshed)~~ 🚧 under construction, ~~[bikeshed-rs](https://github.com/jcbhmr/bikeshed-rs)~~ 🚧 under construction, or ~~[bikeshed.js](https://github.com/jcbhmr/bikeshed.js)~~ 🚧 under construction to integrate bikeshed-builder binaries with your favorite language's package management toolchain. 😉
 
 ## Usage
 

@@ -6,6 +6,12 @@
   <a href="https://github.com/jcbhmr/bikeshed-builder/releases/latest"><img src="https://github.com/jcbhmr/bikeshed-builder/assets/61068799/85929f40-991a-4de8-b212-86f85a7fed5c"></a>
 </p>
 
+<p align=center>
+  <a href="https://github.com/jcbhmr/bikeshed-builder/releases">GitHub releases</a>
+  | <a href="https://speced.github.io/bikeshed/">Bikeshed website</a>
+  | <a href="https://github.com/speced/bikeshed">Bikeshed GitHub</a>
+</p>
+
 🐍 Uses [PyInstaller](https://pyinstaller.org/en/stable/) \
 🏭 Compiles [the `bikeshed` PyPI package](https://pypi.org/project/bikeshed/) to a standalone program \
 [🚚 Distributed via GitHub releases](https://github.com/jcbhmr/bikeshed-builder/releases) \

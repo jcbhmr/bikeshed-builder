@@ -58,15 +58,16 @@ The `.zip` and `.tar.gz` archives all have the same layout:
 ```
 .
 ├── bikeshed
-└── _internal/
+└── bikeshed_internal/
     └── ...
 ```
 
-Note that everything is in the root folder! That means if you want to extract the contents to `~/.bikeshed` here's what you might do:
+Note that everything is in the root folder! That means if you want to extract the contents to `~/.local/bin` here's what you might do:
 
 ```sh
-mkdir ~/.bikeshed
-tar -xzvf bikeshed-x86_64-unknown-linux-gnu.tar.gz -C ~/.bikeshed
+TAG=v4.1.6
+wget https://github.com/jcbhmr/bikeshed-builder/releases/download/$TAG/bikeshed-x86_64-unknown-linux-gnu.tar.gz
+tar -xzvf bikeshed-x86_64-unknown-linux-gnu.tar.gz -C ~/.local/bin
 ```
 
 ## Development
@@ -102,3 +103,5 @@ To create a new release:
 4. Manually run the workflow. You can choose to create a draft instead of immediately publishing it.
 
 You can use `rc1` or similar prereleases to try things out if needed but `draft: true` should suffice in most cases to make sure things look good.
+
+ℹ We're using a custom `--contents-directory=bikeshed_internal` so that you are able to directly `tar -xzf $TARBALL -C $SOMEWHERE/bin` and not have the default `./_internal/` folder clash with other PyInstaller-built programs. <sup>Since 4.1.9</sup>

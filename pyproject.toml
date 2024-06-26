@@ -1,10 +1,10 @@
 [tool.poetry]
 package-mode = false
-version = "4.1.8"
+version = "4.1.9"
 
 [tool.poetry.dependencies]
 python = ">=3.12,<3.13"
-bikeshed = "==4.1.8"
+bikeshed = "==4.1.9"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.4.2"
@@ -16,6 +16,6 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poe.tasks]
 format = "black ."
-build = "pyinstaller -y --collect-all=bikeshed --name bikeshed bikeshed/__main__.py"
+build = "pyinstaller -y --collect-all=bikeshed --name=bikeshed --contents-directory=bikeshed_internal bikeshed/__main__.py"
 _test = "dist/bikeshed/bikeshed --version"
 test.sequence = ["build", "_test"]

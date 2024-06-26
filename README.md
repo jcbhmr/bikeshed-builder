@@ -1,6 +1,6 @@
 # Bikeshed builder
 
-🚲 Bundles Bikeshed for use without Python & pip
+🚲 Bundles [Bikeshed](https://speced.github.io/bikeshed/) for use without Python & pip
 
 <p align=center>
   <a href="https://github.com/jcbhmr/bikeshed-builder/releases/latest"><img src="https://github.com/jcbhmr/bikeshed-builder/assets/61068799/85929f40-991a-4de8-b212-86f85a7fed5c"></a>

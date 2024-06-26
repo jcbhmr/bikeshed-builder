@@ -7,9 +7,10 @@
 </p>
 
 <p align=center>
-  <a href="https://github.com/jcbhmr/bikeshed-builder/releases">GitHub releases</a>
-  | <a href="https://speced.github.io/bikeshed/">Bikeshed website</a>
-  | <a href="https://github.com/speced/bikeshed">Bikeshed GitHub</a>
+  <a href="https://github.com/jcbhmr/bikeshed-builder/releases">GitHub releases (this project)</a>
+  | <a href="https://speced.github.io/bikeshed/">Official Bikeshed website</a>
+  | <a href="https://pypi.org/project/bikeshed/">Official <code>bikeshed</code> PyPI package</a>
+  | <a href="https://github.com/speced/bikeshed">Official Bikeshed GitHub</a>
 </p>
 
 🐍 Uses [PyInstaller](https://pyinstaller.org/en/stable/) \
